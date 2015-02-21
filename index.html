@@ -28,14 +28,24 @@ function getT(){
   }
   return t;
 }
-
   var inD = '0';
   function game(){
+    if (check() !=-1) {
+      document.body.innerHTML = '';
+      document.body.appendChild(getT());
+      return true;
+    }
+
     if(this.innerText == ''){
       inD = inD == '0' ? 'X' : '0';
       this.innerText = inD;
     }
 
+    if (check() != -1) {
+     document.body.appendChild(document.createElement("BUTTON").appendChild(document.createTextNode(check())));
+    }
+  }
+  function check() {
     tds = document.getElementsByTagName('td');
     arr = Array.apply(null, new Array(3)).map(function(val, i) {
       return Array.apply(null, new Array(3)).map(function(val, j) {
@@ -45,21 +55,12 @@ function getT(){
         return 0;
       });
     });
-    var res = check(arr);
-    if (res != -1) {
-      document.body.innerHTML = '';
-      document.body.appendChild(getT());
-      if (res == 2) alert('X won!');
-      if (res == 1) alert('0 won!');
-      if (res == 0) alert("Cat's game :( ");
-    }
-  }
-  function check(arr) {
+
    board = arr.join('-').replace(/,/g,'');
-   if(/222|2...2...2|2....2....2|2..2..2/.test(board)) return 2;
-   if(/111|1...1...1|1....1....1|1..1..1/.test(board)) return 1;
+   if(/222|2...2...2|2....2....2|2..2..2/.test(board)) return 'X won!';
+   if(/111|1...1...1|1....1....1|1..1..1/.test(board)) return '0 won!';
    if(/0/.test(board)) return -1;
-   return 0;
+   return "Cat's game :( ";
   }
 </script>
 </head>
