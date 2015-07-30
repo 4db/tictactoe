@@ -1,3 +1,3 @@
 # tictactoe game
 
-html, css, js.
+html, css, vanilla js.
