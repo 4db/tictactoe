@@ -1,3 +1,4 @@
-# tictactoe game
+# tictactoe
 
-html, css, vanilla js.
+Tictactoe game.
+Tech: html, css, vanilla js.
